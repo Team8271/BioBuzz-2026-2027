@@ -8,6 +8,10 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp
 public class FirstClass extends OpMode {
 
+    private final double
+        servoActivePosition = 0.8;
+    Config robot;
+
     Servo servo;
     HardwareMap hwMap;
 
@@ -24,19 +28,32 @@ public class FirstClass extends OpMode {
 
     @Override
     public void init() {
-        hwMap=this.hardwareMap;
-       telemetry.addData("Hi","Hi");
-       telemetry.update();
-       servo =hwMap.get(Servo.class,"Servo");
-       servo.setPosition(50);
-       double result=(add(12.9, 123));
-       telemetry.addData("hi",result);
-       telemetry.update();
-    }
-// rthrhge
-    @Override
-    public void loop() {
-        servo.setPosition(0);
+        robot = new Config(this);
+        robot.init();
 
     }
+//
+    @Override
+    public void loop() {
+        double axiel = gamepad1.left_stick_y;
+        double lateral = gamepad1.left_stick_x;
+        double yaw = gamepad1. right_stick_x;
+        double frontLeftPower = axiel + lateral + yaw;
+        double frontRightPower = axiel - lateral - yaw;
+        double backLeftPower = axiel - lateral + yaw;
+        double backRightPower= axiel + lateral - yaw;
+        robot.frontLeft.setPower(frontLeftPower);
+        robot.frontRight.setPower(frontRightPower);
+        robot.backLeft.setPower(backLeftPower);
+        robot.backRight.setPower(backRightPower);
+        telemetry.addData("frontLeftPower", frontLeftPower);
+        telemetry.addData("frontRightPower", frontRightPower);
+        telemetry.addData("backRightPower", backRightPower);
+        telemetry.addData("backLeftPower", backLeftPower);
+        telemetry.update();
+    }
 }
+
+
+
+
