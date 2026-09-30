@@ -26,11 +26,13 @@ public class Config {
         frontLeft = hwMap.get(DcMotor.class, "frontLeft");
         backRight = hwMap.get(DcMotor.class, "backRight");
         backLeft = hwMap.get(DcMotor.class, "backLeft");;
+        outTake = hwMap.get(DcMotor.class,"outTake");
         frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         backRight.setDirection(DcMotorSimple.Direction.FORWARD);
         outTake.setDirection(DcMotorSimple.Direction.FORWARD);
+        //idk if its reverse or forward, if no work then try other
 
     }
 }
