@@ -19,7 +19,7 @@ public class FirstClass extends OpMode {
 
     double b;
     boolean t;
-    String hi="I like cheddah cheese, but I lack toes :(";
+    String hi="bye!";
     public double add(double a, double b){
         double result= a+b;
         return result;
@@ -37,9 +37,9 @@ public class FirstClass extends OpMode {
     @Override
     public void loop() {
         double axial = gamepad1.left_stick_y;
-        double lateral = gamepad1.left_stick_x;
-        double yaw = gamepad1. right_stick_x;
-        double outTakeSpeed = gamepad2.left_trigger;
+        double lateral = -gamepad1.left_stick_x;
+        double yaw = -gamepad1. right_stick_x;
+       // double outTakeSpeed = gamepad2.left_trigger;
         double frontLeftPower = axial + lateral + yaw;
         double frontRightPower = axial - lateral - yaw;
         double backLeftPower = axial - lateral + yaw;
@@ -48,12 +48,12 @@ public class FirstClass extends OpMode {
         robot.frontRight.setPower(frontRightPower);
         robot.backLeft.setPower(backLeftPower);
         robot.backRight.setPower(backRightPower);
-        robot.outTake.setPower(gamepad2.left_trigger);
+       // robot.outTake.setPower(gamepad2.left_trigger);
         telemetry.addData("frontLeftPower", frontLeftPower);
         telemetry.addData("frontRightPower", frontRightPower);
         telemetry.addData("backRightPower", backRightPower);
         telemetry.addData("backLeftPower", backLeftPower);
-        telemetry.addData("outTakeSpeed", outTakeSpeed );
+       // telemetry.addData("outTakeSpeed", outTakeSpeed );
         telemetry.update();
     }
 }
