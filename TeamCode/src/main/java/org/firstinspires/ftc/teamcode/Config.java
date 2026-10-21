@@ -25,7 +25,7 @@ public class Config {
         frontRight = hwMap.get(DcMotor.class, "frontRight");
         frontLeft = hwMap.get(DcMotor.class, "frontLeft");
         backRight = hwMap.get(DcMotor.class, "backRight");
-        backLeft = hwMap.get(DcMotor.class, "backLeft");;
+        backLeft = hwMap.get(DcMotor.class, "backLeft");
         //outTake = hwMap.get(DcMotor.class,"outTake");
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -33,7 +33,8 @@ public class Config {
         backRight.setDirection(DcMotorSimple.Direction.REVERSE);
         //outTake.setDirection(DcMotorSimple.Direction.FORWARD);
         //idk if its reverse or forward, if no work then try other
-
+// fr is 0; fl is 1; br is 2; bl is 3
+        //idk if we using big stupid light. figure it out please
     }
 }
 
