@@ -5,7 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp
+@TeleOp(name = "FirstClass")
+
 public class FirstClass extends OpMode {
 
     private final double
@@ -33,7 +34,6 @@ public class FirstClass extends OpMode {
         robot.init();
 
     }
-//
     @Override
     public void loop() {
         double axial = gamepad1.left_stick_y;
@@ -43,19 +43,19 @@ public class FirstClass extends OpMode {
         //double inTakeSpeed = gamepad2.right_trigger;
         double frontLeftPower = axial + lateral + yaw;
         double frontRightPower = axial - lateral - yaw;
-        double backLeftPower = axial - lateral + yaw;
-        double backRightPower= axial + lateral - yaw;
+     //   double backLeftPower = axial - lateral + yaw;
+     //   double backRightPower= axial + lateral - yaw;
         //idk what we need to do here for our outtake and intake. figure it out please
         robot.frontLeft.setPower(frontLeftPower);
         robot.frontRight.setPower(frontRightPower);
-        robot.backLeft.setPower(backLeftPower);
-        robot.backRight.setPower(backRightPower);
+     //   robot.backLeft.setPower(backLeftPower);
+       // robot.backRight.setPower(backRightPower);
        // robot.outTake.setPower(gamepad2.left_trigger);
         //robot.inTake.setPower(gamepad2.right_trigger);
         telemetry.addData("frontLeftPower", frontLeftPower);
         telemetry.addData("frontRightPower", frontRightPower);
-        telemetry.addData("backRightPower", backRightPower);
-        telemetry.addData("backLeftPower", backLeftPower);
+    //    telemetry.addData("backRightPower", backRightPower);
+    //    telemetry.addData("backLeftPower", backLeftPower);
        // telemetry.addData("outTakeSpeed", outTakeSpeed );
         // telemetry.addData(inTakeSpeed", inTakeSpeed);
         telemetry.update();
