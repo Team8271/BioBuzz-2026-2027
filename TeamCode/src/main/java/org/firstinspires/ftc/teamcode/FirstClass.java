@@ -37,8 +37,8 @@ public class FirstClass extends OpMode {
     @Override
     public void loop() {
         double axial = gamepad1.left_stick_y;
-        double lateral = -gamepad1.left_stick_x;
-        double yaw = -gamepad1. right_stick_x;
+        double yaw = -gamepad1.left_stick_x;
+        double lateral = -gamepad1.right_stick_x;
        // double outTakeSpeed = gamepad2.left_trigger;
         //double inTakeSpeed = gamepad2.right_trigger;
         double frontLeftPower = axial + lateral + yaw;
