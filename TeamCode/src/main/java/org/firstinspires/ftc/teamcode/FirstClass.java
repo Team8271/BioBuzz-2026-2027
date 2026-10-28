@@ -20,7 +20,6 @@ public class FirstClass extends OpMode {
 
     double b;
     boolean t;
-    String hi="bye!";
     public double add(double a, double b){
         double result= a+b;
         return result;
@@ -36,13 +35,15 @@ public class FirstClass extends OpMode {
     }
     @Override
     public void loop() {
-        double axial = gamepad1.left_stick_y;
-        double yaw = -gamepad1.left_stick_x;
-        double lateral = -gamepad1.right_stick_x;
+        double axial = gamepad1.left_stick_x;
+        double yaw = -gamepad1.right_stick_y;
+       // double lateral = -gamepad1.right_stick_x;
        // double outTakeSpeed = gamepad2.left_trigger;
         //double inTakeSpeed = gamepad2.right_trigger;
-        double frontLeftPower = axial + lateral + yaw;
-        double frontRightPower = axial - lateral - yaw;
+      //  double frontLeftPower = axial - lateral - yaw;
+        double frontLeftPower = axial-yaw;
+        double frontRightPower = axial+yaw;
+       // double frontRightPower = axial + lateral + yaw;
      //   double backLeftPower = axial - lateral + yaw;
      //   double backRightPower= axial + lateral - yaw;
         //idk what we need to do here for our outtake and intake. figure it out please
@@ -54,6 +55,7 @@ public class FirstClass extends OpMode {
         //robot.inTake.setPower(gamepad2.right_trigger);
         telemetry.addData("frontLeftPower", frontLeftPower);
         telemetry.addData("frontRightPower", frontRightPower);
+
     //    telemetry.addData("backRightPower", backRightPower);
     //    telemetry.addData("backLeftPower", backLeftPower);
        // telemetry.addData("outTakeSpeed", outTakeSpeed );

@@ -39,8 +39,8 @@ public class Config {
         //inTake.setDirection(DcMotorSimple.Direction.Reverse);
 
         //idk if its reverse or forward, if no work then try other
-// fr is 0; fl is 1; br is 2; bl is 3
-        //idk if we using big stupid light. figure it out please
+// fr is 0; fl is 1 we dont have back wheels rn
+
     }
 }
 
