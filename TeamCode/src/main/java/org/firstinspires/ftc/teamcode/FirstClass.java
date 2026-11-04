@@ -39,8 +39,8 @@ public class FirstClass extends OpMode {
     }
     @Override
     public void loop() {
-        double yaw = -gamepad1.left_stick_x;
-        double axial = gamepad1.right_stick_y;
+        double yaw = gamepad1.left_stick_y;
+        double axial = -gamepad1.right_stick_x;
        // double lateral = -gamepad1.right_stick_x;
        // double outTakeSpeed = gamepad1.left_trigger;
         double inTakeSpeed = gamepad1.right_trigger;
@@ -51,8 +51,9 @@ public class FirstClass extends OpMode {
 
 
 
-        if (gamepad1.right_trigger > 0.2){
-            robot.inTake.setPower (1);
+        if (gamepad1.right_trigger > 0.2) {
+            robot.inTake.setPower(1);
+        }
 
 
         // double frontRightPower = axial + lateral + yaw;
@@ -79,7 +80,7 @@ public class FirstClass extends OpMode {
     }
 
 
-    }}
+    }
 
 
 
