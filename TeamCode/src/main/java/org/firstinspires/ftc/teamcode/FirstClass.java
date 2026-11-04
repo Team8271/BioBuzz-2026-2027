@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -12,6 +13,7 @@ public class FirstClass extends OpMode {
     private final double
         servoActivePosition = 0.8;
     Config robot;
+
 
     Servo servo;
     HardwareMap hwMap;
@@ -32,37 +34,52 @@ public class FirstClass extends OpMode {
         robot = new Config(this);
         robot.init();
 
+
+
     }
     @Override
     public void loop() {
-        double axial = gamepad1.left_stick_x;
-        double yaw = -gamepad1.right_stick_y;
+        double yaw = -gamepad1.left_stick_x;
+        double axial = gamepad1.right_stick_y;
        // double lateral = -gamepad1.right_stick_x;
-       // double outTakeSpeed = gamepad2.left_trigger;
-        //double inTakeSpeed = gamepad2.right_trigger;
+       // double outTakeSpeed = gamepad1.left_trigger;
+        double inTakeSpeed = gamepad1.right_trigger;
       //  double frontLeftPower = axial - lateral - yaw;
         double frontLeftPower = axial-yaw;
         double frontRightPower = axial+yaw;
-       // double frontRightPower = axial + lateral + yaw;
+
+
+
+
+        if (gamepad1.right_trigger > 0.2){
+            robot.inTake.setPower (1);
+
+
+        // double frontRightPower = axial + lateral + yaw;
      //   double backLeftPower = axial - lateral + yaw;
      //   double backRightPower= axial + lateral - yaw;
         //idk what we need to do here for our outtake and intake. figure it out please
         robot.frontLeft.setPower(frontLeftPower);
         robot.frontRight.setPower(frontRightPower);
+            robot.inTake.setPower(inTakeSpeed);
+        //robot.outTake.setPower(outTakePower);
      //   robot.backLeft.setPower(backLeftPower);
        // robot.backRight.setPower(backRightPower);
-       // robot.outTake.setPower(gamepad2.left_trigger);
-        //robot.inTake.setPower(gamepad2.right_trigger);
+      //  robot.outTake.setPower(gamepad1.left_trigger);
+        robot.inTake.setPower(gamepad1.right_trigger);
         telemetry.addData("frontLeftPower", frontLeftPower);
         telemetry.addData("frontRightPower", frontRightPower);
 
+
     //    telemetry.addData("backRightPower", backRightPower);
     //    telemetry.addData("backLeftPower", backLeftPower);
-       // telemetry.addData("outTakeSpeed", outTakeSpeed );
-        // telemetry.addData(inTakeSpeed", inTakeSpeed);
+      //telemetry.addData("outTakeSpeed", outTakeSpeed );
+         telemetry.addData("inTakeSpeed", inTakeSpeed);
         telemetry.update();
     }
-}
+
+
+    }}
 
 
 
