@@ -15,7 +15,7 @@ public class Config {
     DcMotor frontRight;
     //DcMotor backLeft;
     //DcMotor backRight;
-  //  DcMotor outTake;
+    DcMotor outTake;
     DcMotor inTake;
    // Servo inTakeServo;
     Servo pollenPusher;
@@ -34,19 +34,19 @@ public class Config {
        // inTakeServo = hwMap.get(Servo.class, "inTakeServo");
         //backRight = hwMap.get(DcMotor.class, "backRight"); //port 2
         //backLeft = hwMap.get(DcMotor.class, "backLeft");port3
-       // outTake = hwMap.get(DcMotor.class,"outTake");
+        outTake = hwMap.get(DcMotor.class,"outTake");
         inTake = hwMap.get(DcMotor.class,"inTake");
       //  pollenPusher = hwMap.get(Servo.class,"pollenPusher"); // port 0. i dont really know how to code servo
         frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
        // backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
         //backRight.setDirection(DcMotorSimple.Direction.REVERSE);
-       //outTake.setDirection(DcMotorSimple.Direction.FORWARD);
+       outTake.setDirection(DcMotorSimple.Direction.FORWARD);
         inTake.setDirection(DcMotorSimple.Direction.REVERSE);
 //how to make servos reverse
 
 
     }
 }
-//
+
 
