@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 
@@ -17,8 +17,8 @@ public class Config {
     //DcMotor backRight;
     DcMotor outTake;
     DcMotor inTake;
-   // Servo inTakeServo;
-    Servo pollenPusher;
+    CRServo inTakeServo;
+    //CRServo pollenPusher;
     HardwareMap hwMap;
 
     private final OpMode opMode;
@@ -31,7 +31,7 @@ public class Config {
         hwMap = opMode.hardwareMap;
         frontRight = hwMap.get(DcMotor.class, "frontRight"); //port 0
         frontLeft = hwMap.get(DcMotor.class, "frontLeft"); //port1
-       // inTakeServo = hwMap.get(Servo.class, "inTakeServo");
+        inTakeServo = hwMap.get(CRServo.class, "inTakeServo");
         //backRight = hwMap.get(DcMotor.class, "backRight"); //port 2
         //backLeft = hwMap.get(DcMotor.class, "backLeft");port3
         outTake = hwMap.get(DcMotor.class,"outTake");
@@ -43,6 +43,7 @@ public class Config {
         //backRight.setDirection(DcMotorSimple.Direction.REVERSE);
        outTake.setDirection(DcMotorSimple.Direction.FORWARD);
         inTake.setDirection(DcMotorSimple.Direction.REVERSE);
+
 //how to make servos reverse
 
 

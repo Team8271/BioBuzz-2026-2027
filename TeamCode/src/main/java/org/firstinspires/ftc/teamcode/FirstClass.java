@@ -1,10 +1,12 @@
 package org.firstinspires.ftc.teamcode;
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
+
 import com.qualcomm.robotcore.hardware.Servo;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
 
 @TeleOp(name = "FirstClass")
 //
@@ -50,10 +52,19 @@ public class FirstClass extends OpMode {
 
 
 
-        if (gamepad2.right_trigger > 0.2) {
-            robot.inTake.setPower(0.1);
-        }
+      if (gamepad2.aWasPressed()) {
+          robot.inTake.setPower(.5);
+      }
 
+        if (gamepad2.bWasPressed()) {
+            robot.inTake.setPower(0);
+        }
+        if (gamepad2.xWasPressed()) {
+            robot.inTakeServo.setPower(-1);
+        }
+        if (gamepad2.yWasPressed()){
+            robot.inTakeServo.setPower(0);
+        }
 
         // double frontRightPower = axial + lateral + yaw;
      //   double backLeftPower = axial - lateral + yaw;
@@ -62,14 +73,17 @@ public class FirstClass extends OpMode {
         // add code for intake servo
         robot.frontLeft.setPower(frontLeftPower);
         robot.frontRight.setPower(frontRightPower);
+        robot.inTakeServo.setDirection(REVERSE);
+
           //+  robot.inTake.setPower(inTakeSpeed);
        // robot.outTake.setPower(outTakePower);
-     //   robot.backLeft.setPower(backLeftPower);
+     //   robot.backLeft.setPower(backLeftPower);g
        // robot.backRight.setPower(backRightPower);
         robot.outTake.setPower(gamepad2.left_trigger);
-        robot.inTake.setPower(gamepad2.right_trigger);
+        robot.inTake.setPower(.45 );
         telemetry.addData("frontLeftPower", frontLeftPower);
         telemetry.addData("frontRightPower", frontRightPower);
+
 
 
     //    telemetry.addData("backRightPower", backRightPower);
