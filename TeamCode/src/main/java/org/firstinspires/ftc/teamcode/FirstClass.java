@@ -37,6 +37,8 @@ public class FirstClass extends OpMode {
 
 
 
+
+
     }
     @Override
     public void loop() {
@@ -53,18 +55,28 @@ public class FirstClass extends OpMode {
 
 
       if (gamepad2.aWasPressed()) {
-          robot.inTake.setPower(.5);
+          robot.inTake.setVelocity(1440);//the cross is a
       }
 
         if (gamepad2.bWasPressed()) {
-            robot.inTake.setPower(0);
+            robot.inTake.setVelocity(0);// the o is b
         }
         if (gamepad2.xWasPressed()) {
-            robot.inTakeServo.setPower(-1);
+            robot.inTakeServo.setPower(-1);//square is x
         }
         if (gamepad2.yWasPressed()){
-            robot.inTakeServo.setPower(0);
+            robot.inTakeServo.setPower(0);// triangle is y
         }
+        if (gamepad2.left_bumper){
+            robot.inTake.setPower(-.6);
+        }
+        if (gamepad2.right_trigger_pressed){
+            robot.pollenPusher.setPower(0.5);
+        }
+        if(gamepad2.rightTriggerWasReleased()){
+            robot.pollenPusher.setPower(0);
+        }
+
 
         // double frontRightPower = axial + lateral + yaw;
      //   double backLeftPower = axial - lateral + yaw;
@@ -75,12 +87,13 @@ public class FirstClass extends OpMode {
         robot.frontRight.setPower(frontRightPower);
         robot.inTakeServo.setDirection(REVERSE);
 
+
           //+  robot.inTake.setPower(inTakeSpeed);
        // robot.outTake.setPower(outTakePower);
      //   robot.backLeft.setPower(backLeftPower);g
        // robot.backRight.setPower(backRightPower);
         robot.outTake.setPower(gamepad2.left_trigger);
-        robot.inTake.setPower(.45 );
+       // robot.inTake.setPower(0.5);
         telemetry.addData("frontLeftPower", frontLeftPower);
         telemetry.addData("frontRightPower", frontRightPower);
 
@@ -90,6 +103,8 @@ public class FirstClass extends OpMode {
     //    telemetry.addData("backLeftPower", backLeftPower);
       telemetry.addData("outTakeSpeed", outTakeSpeed );
          telemetry.addData("inTakeSpeed", inTakeSpeed);
+
+
         telemetry.update();
     }
 
