@@ -55,7 +55,7 @@ public class FirstClass extends OpMode {
 
 
       if (gamepad2.aWasPressed()) {
-          robot.inTake.setVelocity(1440);//the cross is a
+          robot.inTake.setVelocity(1330);//the cross is a, launching inconsistent. 1330 works well on 12 battery
       }
 
         if (gamepad2.bWasPressed()) {
@@ -75,6 +75,9 @@ public class FirstClass extends OpMode {
         }
         if(gamepad2.rightTriggerWasReleased()){
             robot.pollenPusher.setPower(0);
+        }
+        if(gamepad2.right_bumper){
+            robot.outTake.setPower(-0.5);
         }
 
 

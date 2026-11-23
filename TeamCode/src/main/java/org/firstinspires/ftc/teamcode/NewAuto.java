@@ -1,8 +1,5 @@
-
-
-
-
-        package org.firstinspires.ftc.teamcode;
+//intake is actually outtake btw. (for sophias DUMBAHH brain)
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -10,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
@@ -28,6 +25,7 @@ public class NewAuto extends OpMode {
 
     public void driveStop() {
         frontLeft.setPower(0);
+
         frontRight.setPower(0);
 
 
@@ -41,9 +39,11 @@ public class NewAuto extends OpMode {
 
 
 
-    // Drive Mo[tors
+    // Drive Motors
     private DcMotorEx frontLeft;
     private DcMotorEx frontRight;
+    private DcMotorEx inTake;
+    private CRServo inTakeServo;
 
 
 
@@ -56,13 +56,16 @@ public class NewAuto extends OpMode {
         // Hardware Mapping
         frontLeft  = hardwareMap.get(DcMotorEx.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotorEx.class, "frontRight");
+        inTake = hardwareMap.get(DcMotorEx.class, "inTake");
+        inTakeServo = hardwareMap.get(CRServo.class,"inTakeServo");
 
 
 
 
-
+// setting the direction of the  motors
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        inTake.setDirection(DcMotorSimple.Direction.REVERSE);
 
 
 
@@ -80,7 +83,7 @@ public class NewAuto extends OpMode {
 
 
 
-
+      // auto says done
         telemetry.addLine("BioBuzz Autonomous Initialized");
         telemetry.update();
 
@@ -102,21 +105,26 @@ public class NewAuto extends OpMode {
         switch (step) {
 
             case 0:
-                driveForward();
-                if (timer.seconds() >= .5) {
+               // driveForward();
+                if (timer.seconds() >= .1) {
                     driveStop();
                     timer.reset();
+                    inTake.setPower(1);
+                    inTakeServo.setPower(-1);
                     step++;
                 }
                 break;
             case 1:
                 driveStop();
+                inTake.setPower(0);
+                inTakeServo.setPower(0);
                 break;
 
             default:
                 driveStop();
                 break;
         }
+
 
           /*
           switch (step) {
@@ -127,70 +135,7 @@ public class NewAuto extends OpMode {
                case 2:
 
                case 3:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-+-
+               ++-
                case 4:
 
                case 5:
@@ -209,6 +154,41 @@ public class NewAuto extends OpMode {
 
           }
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         telemetry.addData("Current Step", step);
