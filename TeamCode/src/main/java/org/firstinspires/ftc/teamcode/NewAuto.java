@@ -1,12 +1,11 @@
 //intake is actually outtake btw. (for sophias DUMBAHH brain)
 package org.firstinspires.ftc.teamcode;
-
+import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -68,6 +67,10 @@ public class NewAuto extends OpMode {
         inTake.setDirection(DcMotorSimple.Direction.REVERSE);
 
 
+        PIDFCoefficients pidf = new PIDFCoefficients(0, 0, 0 , 11.87);
+        inTake.setPIDFCoefficients(DcMotorEx.RunMode.RUN_USING_ENCODER, pidf);
+
+
 
 
 
@@ -106,10 +109,10 @@ public class NewAuto extends OpMode {
 
             case 0:
                // driveForward();
-                if (timer.seconds() >= .1) {
+                if (timer.seconds() >= .5) {
                     driveStop();
                     timer.reset();
-                    inTake.setPower(1);
+                    inTake.setVelocity(1330);
                     inTakeServo.setPower(-1);
                     step++;
                 }
@@ -118,6 +121,7 @@ public class NewAuto extends OpMode {
                 driveStop();
                 inTake.setPower(0);
                 inTakeServo.setPower(0);
+                inTake.setVelocity(0);
                 break;
 
             default:

@@ -55,7 +55,7 @@ public class FirstClass extends OpMode {
 
 
       if (gamepad2.aWasPressed()) {
-          robot.inTake.setVelocity(1330);//the cross is a, launching inconsistent. 1330 works well on 12 battery
+          robot.inTake.setVelocity(1350);//the cross is a, launching inconsistent. 1330 works well on 12 battery
       }
 
         if (gamepad2.bWasPressed()) {
@@ -78,6 +78,10 @@ public class FirstClass extends OpMode {
         }
         if(gamepad2.right_bumper){
             robot.outTake.setPower(-0.5);
+
+        }
+        if(gamepad2.left_bumper){
+            robot.outTake.setPower(0.5);
         }
 
 
@@ -89,6 +93,7 @@ public class FirstClass extends OpMode {
         robot.frontLeft.setPower(frontLeftPower);
         robot.frontRight.setPower(frontRightPower);
         robot.inTakeServo.setDirection(REVERSE);
+       // robot.inTake.setDirection(REVERSE);
 
 
           //+  robot.inTake.setPower(inTakeSpeed);
